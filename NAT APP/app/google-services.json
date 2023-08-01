@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "101636743679",
+    "project_id": "natasha-bd631",
+    "storage_bucket": "natasha-bd631.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101636743679:android:158ac3c142b30cbb8cc7ca",
+        "android_client_info": {
+          "package_name": "com.example.natasha"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "101636743679-sblufv1kqfc4r9f77359cjqml06c7mrl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmP68BX6W5sepa3jV97tKmYHKDmpx_3Rw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "101636743679-sblufv1kqfc4r9f77359cjqml06c7mrl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
