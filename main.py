@@ -480,7 +480,12 @@ def type():
         try:
             user_input = takecommand().strip()
             key = mapping.get(user_input.lower())
-            if key:
+            if "type" in user_input:
+                user_input = user_input[5:]
+                for i in user_input:
+                    pyautogui.typewrite(i)  # string input
+                pyautogui.typewrite(" ")
+            elif key:
                 pyautogui.press(key)
                 pyautogui.keyUp(key)
                 speak(key+" pressed")
@@ -554,11 +559,6 @@ def type():
             elif "deactivate" in user_input:  # sethu this is to end the loop
                 speak("keyboard access deactivated")
                 break
-            elif "type" in user_input:
-                user_input = user_input[5:]
-                for i in user_input:
-                    pyautogui.typewrite(i)  # string input
-                pyautogui.typewrite(" ")
         except Exception:
             print("try again...")#zz
             said = "try again..."
