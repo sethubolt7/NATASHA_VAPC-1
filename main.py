@@ -1143,6 +1143,147 @@ def TaskExecution():
         global drag
         global mouse_thread_flag
         global total_error
+
+        #for keyboard feature - start
+        mapping = {
+            "backspace": "backspace",
+            "tab": "tab",
+            "enter": "enter",
+            "shift": "shift",
+            "ctrl": "ctrl",
+            "control": "ctrl",
+            "alt": "alter",
+            "alter": "alt",
+            "pause": "pause",
+            "caps lock": "capslock",
+            "esc": "esc",
+            "space": "space",
+            "page up": "pageup",
+            "page down": "pagedown",
+            "end": "end",
+            "home": "home",
+            "left": "left",
+            "up": "up",
+            "right": "right",
+            "down": "down",
+            "insert": "insert",
+            "delete": "delete",
+            "command": "command",
+            "f1": "f1",
+            "f2": "f2",
+            "f3": "f3",
+            "f4": "f4",
+            "f5": "f5",
+            "f6": "f6",
+            "f7": "f7",
+            "f8": "f8",
+            "f9": "f9",
+            "f10": "f10",
+            "f11": "f11",
+            "f12": "f12",
+            "print screen": "printscreen",
+            "scroll lock": "scrolllock",
+            "num lock": "numlock",
+            "backquote": "`",
+            "minus": "-",
+            "equals": "=",
+            "left square bracket": "[",
+            "right square bracket": "]",
+            "backslash": "\\",
+            "semicolon": ";",
+            "apostrophe": "'",
+            "comma": ",",
+            "period": ".",
+            "slash": "/",
+            "0": "0",
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "a": "a",
+            "b": "b",
+            "be": "b",
+            "bee": "b",
+            "see": "c",
+            "sea": "c",
+            "c": "c",
+            "d": "d",
+            "dee": "d",
+            "de": "d",
+            "di": "d",
+            "e": "e",
+            "f": "f",
+            "ef": "f",
+            "eff": "f",
+            "yef": "f",
+            "g": "g",
+            "je": "g",
+            "gi": "g",
+            "ge": "g",
+            "h": "h",
+            "eh": "h",
+            "i": "i",
+            "ai": "i",
+            "ei": "i",
+            "yi": "i",
+            "j": "j",
+            "jey": "j",
+            "jhey": "j",
+            "k": "k",
+            "kay": "k",
+            "el": "l",
+            "l": "l",
+            "yel": "l",
+            "em": "m",
+            "m": "m",
+            "yem": "m",
+            "yum": "m",
+            "n": "n",
+            "en": "n",
+            "enn": "n",
+            "o": "o",
+            "oo": "o",
+            "oh": "o",
+            "p": "p",
+            "pee": "p",
+            "q": "q",
+            "qu": "q",
+            "queue": "q",
+            "que": "q",
+            "r": "r",
+            "ar": "r",
+            "s": "s",
+            "yes": "s",
+            "es": "s",
+            "t": "t",
+            "tee": "t",
+            "tea": "t",
+            "u": "u",
+            "you": "u",
+            "v": "v",
+            "we": "v",
+            "vi": "v",
+            "ve": "v",
+            "w": "w",
+            "double you": "w",
+            "double u": "w",
+            "double": "w",
+            "x": "x",
+            "ex": "x",
+            "yex": "x",
+            "y": "y",
+            "why": "y",
+            "z": "z",
+            "ez": "z"
+
+        }
+        # for keyboard feature - end
+
         print('Natasha :: version: VAPC-1')
         speak("i am Natasha ,..,    version  V A P C 1")
         print('CREATED BY:\n* SP.SETHULAKSHMANAN')
@@ -1157,7 +1298,9 @@ def TaskExecution():
                     print('say my name to wake me up')  # zz
                     listen = 'say my name to wake me up'
                     wake_up = takecommand()
-                    if "bye" in wake_up or 'go offline' in wake_up or 'stop listening' in wake_up:
+                    user_input = wake_up
+                    key = mapping.get(user_input.lower())
+                    if "bye" in wake_up or 'go offline' in wake_up :
                         print('going offline')
                         said = 'going offline'
                         speak('going offline')
@@ -1172,21 +1315,39 @@ def TaskExecution():
                     # drag = 50
                     # elif "slow" in wake_up:
                     # drag = 10
+                    if "type" in wake_up:
+                        user_input = wake_up[5:]
+                        for i in user_input:
+                            pyautogui.typewrite(i)  # string input
+                        pyautogui.typewrite(" ")
+                        continue
+
+
+                    elif key:
+                        pyautogui.press(key)
+                        pyautogui.keyUp(key)
+                        speak(key + " pressed")
+                        continue
+
                     elif "maximize" in wake_up:
                         maximize_window()
                         continue
+
                     elif "minimise" in wake_up:
                         minimize_window()
                         continue
+
                     elif "close" in wake_up:
                         close_window()
                         continue
+
                     elif "switch tab" in wake_up or "which tab" in wake_up or "pitch tab" in wake_up or "twitch tab" in wake_up:
                         pyautogui.keyDown("ctrl")
                         pyautogui.press("tab")
                         pyautogui.keyUp("ctrl")
                         speak("switched")
                         continue
+
                     elif "switch" in wake_up or "which" in wake_up or "pitch" in wake_up or "twitch" in wake_up:
                         pyautogui.keyDown("alt")
                         pyautogui.press("tab")
@@ -1196,54 +1357,98 @@ def TaskExecution():
                         pyautogui.keyUp("alt")
                         speak("switched")
                         continue
+
                     elif "play" in wake_up or "pause" in wake_up or "pass" in wake_up:
                         pyautogui.press("space")
                         continue
-                    elif "select" in wake_up or "press" in wake_up:
-                        pyautogui.press("enter")
-                        continue
-                    elif "copy" in wake_up:
-                        pyautogui.keyDown("ctrl")
-                        pyautogui.press("c")
-                        pyautogui.keyUp("ctrl")
-                        continue
-                    elif "paste" in wake_up:
-                        pyautogui.keyDown("ctrl")
-                        pyautogui.press("v")
-                        pyautogui.keyUp("ctrl")
-                        continue
-                    elif "delete" in wake_up:
-                        pyautogui.press("delete")
-                        pyautogui.keyUp("delete")
-                        continue
+
                     elif "select all" in wake_up:
                         pyautogui.keyDown("ctrl")
                         pyautogui.press("a")
                         pyautogui.keyUp("ctrl")
                         continue
+
+                    elif "select" in wake_up or "press" in wake_up:
+                        pyautogui.press("enter")
+                        continue
+
+                    elif "copy" in wake_up:
+                        pyautogui.keyDown("ctrl")
+                        pyautogui.press("c")
+                        pyautogui.keyUp("ctrl")
+                        continue
+
+                    elif "paste" in wake_up:
+                        pyautogui.keyDown("ctrl")
+                        pyautogui.press("v")
+                        pyautogui.keyUp("ctrl")
+                        continue
+
+                    elif "delete" in wake_up:
+                        pyautogui.press("delete")
+                        pyautogui.keyUp("delete")
+                        continue
+
                     elif "right click" in wake_up :
                         right_click()
                         continue
+
                     elif "left click" in wake_up or "click" in wake_up:
                         left_click()
                         continue
+
                     elif "double click" in wake_up:
                         double_click()
                         continue
-                    elif "hold" in wake_up or "drag" in wake_up:
+
+                    elif "drag" in wake_up:
                         hold()
                         continue
+
                     elif "release" in wake_up:
                         release()
                         continue
+
                     elif "up" in wake_up:
                         pyautogui.press("up")
+                        continue
+
                     elif "down" in wake_up:
                         pyautogui.press("down")
+                        continue
+
                     elif "left" in wake_up:
                         pyautogui.press("left")
+                        continue
+
                     elif "right" in wake_up:
                         pyautogui.press("right")
+                        continue
+
+                    elif "undo" in wake_up or "rollback" in wake_up:
+                        pyautogui.keyDown("ctrl")
+                        pyautogui.press("z")
+                        pyautogui.keyUp("ctrl")
+                        speak("undone...")
+                        continue
+
+                    elif "hold" in wake_up or "old" in wake_up:
+                        if len(wake_up.strip().split()) >= 2:
+                            wake_up = wake_up.strip().split(" ")[-1]
+                            key = mapping.get(wake_up)
+                            pyautogui.keyDown(key)
+                            lkeys.append(key)
+                            speak(key + " is on hold ")
+                            continue
+
+                    elif "reset" in wake_up:
+                        for i in lkeys:
+                            pyautogui.keyUp(i)
+                        speak("keyboard has been reset ")
+                        lkeys = []
+                        continue
+
+                    # features initializing - start
                     elif "advanced mode" in wake_up or "advance mode" in wake_up:
                         advance()
                         speak("call my name,..., when you need my help")
@@ -1297,7 +1502,7 @@ def TaskExecution():
                             "don't  worry  the emergency message  is  sent  to   the  emergency number  given in the  NAT  app")
                         speak("they will rescue you soon...")
                         continue
-
+                    # features initializing - start
 
                     elif 'natasha' in wake_up or "wake up" in wake_up or "get up" in wake_up:
                         while True:
@@ -1355,7 +1560,7 @@ def TaskExecution():
                                 break
 
 
-                            elif "stop listening" in query or 'stop' in query:
+                            elif "stop listening" in query or 'stop' in query or "top listening" in query or "don't listen" in query:
                                 winsound.Beep(32767, 500)
                                 speak("call my name,..., when you need my help")
                                 break
