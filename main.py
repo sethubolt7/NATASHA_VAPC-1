@@ -531,7 +531,7 @@ def type():
                 pyautogui.hotkey("alt", "f4")
                 time.sleep(0.5)
                 speak("closed")
-            elif "hold" in user_input.lower():
+            elif "hold" in user_input.lower() or "old" in user_input.lower():
                 if len(user_input.strip().split()) >= 2:
                     user_input = user_input.strip().split(" ")[-1]
                     key = mapping.get(user_input.lower())
@@ -1221,10 +1221,10 @@ def TaskExecution():
                         pyautogui.press("a")
                         pyautogui.keyUp("ctrl")
                         continue
-                    elif "right click" in wake_up or "right" in wake_up:
+                    elif "right click" in wake_up :
                         right_click()
                         continue
-                    elif "left click" in wake_up or "left" in wake_up or "click" in wake_up:
+                    elif "left click" in wake_up or "click" in wake_up:
                         left_click()
                         continue
                     elif "double click" in wake_up:
@@ -1236,6 +1236,14 @@ def TaskExecution():
                     elif "release" in wake_up:
                         release()
                         continue
+                    elif "up" in wake_up:
+                        pyautogui.press("up")
+                    elif "down" in wake_up:
+                        pyautogui.press("down")
+                    elif "left" in wake_up:
+                        pyautogui.press("left")
+                    elif "right" in wake_up:
+                        pyautogui.press("right")
                     elif "advanced mode" in wake_up or "advance mode" in wake_up:
                         advance()
                         speak("call my name,..., when you need my help")
