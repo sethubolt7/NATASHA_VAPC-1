@@ -1164,6 +1164,7 @@ def TaskExecution():
             "home": "home",
             "left": "left",
             "up": "up",
+            "aap":"up",
             "right": "right",
             "down": "down",
             "insert": "insert",
@@ -1348,6 +1349,11 @@ def TaskExecution():
                         speak("switched")
                         continue
 
+                    elif "recent tabs" in wake_up or "recent tab" in wake_up:
+                        pyautogui.keyDown("win")
+                        pyautogui.press("tab")
+                        pyautogui.keyUp("win")
+
                     elif "switch" in wake_up or "which" in wake_up or "pitch" in wake_up or "twitch" in wake_up:
                         pyautogui.keyDown("alt")
                         pyautogui.press("tab")
@@ -1409,7 +1415,7 @@ def TaskExecution():
                         release()
                         continue
 
-                    elif "up" in wake_up:
+                    elif "up" in wake_up or "aap" in wake_up:
                         pyautogui.press("up")
                         continue
 
