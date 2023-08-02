@@ -1074,13 +1074,17 @@ def advance():
     global said
     global listen
     global copy1
-    openai.api_key = os.getenv(
-        "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")  # incase of problem change key value in api_requester
-    model_engine = "text-davinci-003"
-    speak("advance mode activated")
+    # Set your OpenAI API key
+    api_key = "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"
+    openai.api_key = api_key
+
+    speak("Advance mode activated...")
     while True:
         try:
-            prompt = takecommand()
+            try:
+                prompt = takecommand()
+            except Exception:
+                continue
             copy1 = 1
             tprompt = prompt.split()
             lprompt = len(tprompt)
@@ -1090,13 +1094,10 @@ def advance():
                 break
             elif prompt != "" and lprompt > 1:
                 completion = openai.Completion.create(
-                    model=model_engine,
-                    prompt=prompt,
-                    max_tokens=1024,
-                    n=1,
-                    stop=None,
-                    temperature=0.5,
-                )
+                                engine="text-davinci-003",  # Choose an engine (e.g., text-davinci-003)
+                                prompt=prompt,
+                                max_tokens=100  # Adjust as needed
+                 )
                 response = completion.choices[0].text
                 print(response)#zz
                 if "program" in prompt or "code" in prompt:
