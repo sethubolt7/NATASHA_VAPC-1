@@ -489,50 +489,50 @@ def type():
                 pyautogui.press(key)
                 pyautogui.keyUp(key)
                 speak(key+" pressed")
-            elif user_input.lower() == "copy":
+            elif "copy" in user_input.lower():
                 pyautogui.keyDown("ctrl")
                 pyautogui.press("c")
                 pyautogui.keyUp("ctrl")
                 speak("copied...")
-            elif user_input.lower() == "paste":
+            elif "paste" in user_input.lower():
                 pyautogui.keyDown("ctrl")
                 pyautogui.press("v")
                 pyautogui.keyUp("ctrl")
                 speak("pasted...")
-            elif user_input.lower() == "undo":
+            elif "undo" in user_input.lower() or "rollback" in user_input.lower():
                 pyautogui.keyDown("ctrl")
                 pyautogui.press("z")
                 pyautogui.keyUp("ctrl")
                 speak("undone...")
-            elif user_input.lower() == "select all":
+            elif "select all" in user_input.lower():
                 pyautogui.keyDown("ctrl")
                 pyautogui.press("a")
                 pyautogui.keyUp("ctrl")
                 speak("selected")
-            elif user_input.lower() == "left click":  # left click
+            elif "left click" in user_input.lower():  # left click
                 pyautogui.leftClick()
                 speak("done")
-            elif user_input.lower() == "right click":  # right click
+            elif "right click" in user_input.lower():  # right click
                 pyautogui.rightClick()
                 speak("done")
-            elif user_input.lower() == "double click":
+            elif "double click" in user_input.lower():
                 pyautogui.doubleClick()
                 speak("done")
-            elif user_input.lower() == "drag":
+            elif "drag" in user_input.lower():
                 pyautogui.mouseDown(button='left')
                 speak("now you can drag ")
-            elif user_input.lower() == "release":
+            elif "release" in user_input.lower():
                 pyautogui.mouseUp(button='left')
                 speak("released ")
-            elif user_input.lower() == "maximize":
+            elif "maximize" in user_input.lower():
                 pyautogui.hotkey("win", "up")
                 time.sleep(0.5)
                 speak("maximized")
-            elif user_input.lower() == "minimise":
+            elif "minimise" in user_input.lower():
                 pyautogui.hotkey("win", "down")
                 time.sleep(0.5)
                 speak("minimized")
-            elif user_input.lower() == "close":
+            elif "close" in user_input.lower() :
                 pyautogui.hotkey("alt", "f4")
                 time.sleep(0.5)
                 speak("closed")
