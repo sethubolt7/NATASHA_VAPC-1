@@ -1302,6 +1302,7 @@ def TaskExecution():
                     wake_up = takecommand()
                     user_input = wake_up
                     key = mapping.get(user_input.lower())
+                    wake_up_split = wake_up.split()
                     if "bye" in wake_up or 'go offline' in wake_up :
                         print('going offline')
                         said = 'going offline'
@@ -1317,7 +1318,7 @@ def TaskExecution():
                     # drag = 50
                     # elif "slow" in wake_up:
                     # drag = 10
-                    if "type" in wake_up:
+                    if wake_up_split[0] == "type" :
                         user_input = wake_up[5:]
                         for i in user_input:
                             pyautogui.typewrite(i)  # string input
