@@ -1289,7 +1289,7 @@ def TaskExecution():
         print('Natasha :: version: VAPC-1')
         speak("i am Natasha ,..,    version  V A P C 1")
         print('CREATED BY:\n* SP.SETHULAKSHMANAN')
-        said='Natasha :: version: VAPC-1'+'\nCREATED BY:\n* SETHULAKSHMANAN SP\n'#* SANJITH KUMAR M\n* VIGRAM K M\n* YOKESH SHAMLIN SHINANTH JS'
+        said='Natasha :: version: VAPC-1'+'\nCREATED BY:\n * HEURISTIC SOLARIS' # \n * SETHULAKSHMANAN SP\n#* SANJITH KUMAR M\n* VIGRAM K M\n* YOKESH SHAMLIN SHINANTH JS'
         speak('I  AM  ONLINE')
 
 
@@ -1303,7 +1303,16 @@ def TaskExecution():
                     user_input = wake_up
                     key = mapping.get(user_input.lower())
                     wake_up_split = wake_up.split()
-                    if "bye" in wake_up or 'go offline' in wake_up :
+                    scroll_amount = 5
+
+                    if wake_up_split[0] == "type" :
+                        user_input = wake_up[5:]
+                        for i in user_input:
+                            pyautogui.typewrite(i)  # string input
+                        pyautogui.typewrite(" ")
+                        continue
+
+                    elif "bye" in wake_up or 'go offline' in wake_up :
                         print('going offline')
                         said = 'going offline'
                         speak('going offline')
@@ -1318,18 +1327,51 @@ def TaskExecution():
                     # drag = 50
                     # elif "slow" in wake_up:
                     # drag = 10
-                    if wake_up_split[0] == "type" :
-                        user_input = wake_up[5:]
-                        for i in user_input:
-                            pyautogui.typewrite(i)  # string input
-                        pyautogui.typewrite(" ")
-                        continue
 
 
                     elif key:
                         pyautogui.press(key)
                         pyautogui.keyUp(key)
                         speak(key + " pressed")
+                        continue
+
+                    elif "page" in wake_up:
+                        pyautogui.press('pageup')
+                        continue
+
+                    elif "move front" in wake_up or "move friend" in wake_up:
+                        pyautogui.keyDown("ctrl")
+                        pyautogui.keyDown("shift")
+                        pyautogui.press("right")
+                        pyautogui.keyUp("shift")
+                        pyautogui.keyUp("ctrl")
+                        pyautogui.press("right")
+                        continue
+
+                    elif "move front" in wake_up or "move friend" in wake_up:
+                        pyautogui.keyDown("ctrl")
+                        pyautogui.keyDown("shift")
+                        pyautogui.press("right")
+                        pyautogui.keyUp("shift")
+                        pyautogui.keyUp("ctrl")
+                        pyautogui.press("right")
+                        continue
+
+                    elif "move back" in wake_up or "move bag" in wake_up:
+                        pyautogui.keyDown("ctrl")
+                        pyautogui.keyDown("shift")
+                        pyautogui.press("left")
+                        pyautogui.keyUp("shift")
+                        pyautogui.keyUp("ctrl")
+                        pyautogui.press("left")
+                        continue
+
+                    elif "go back" in wake_up or "go bag" in wake_up or "big bag" in wake_up or "back" in wake_up or "bag" in wake_up:
+                        pyautogui.hotkey("alt","left")
+                        continue
+
+                    elif "go front" in wake_up or "go friend" in wake_up or "front" in wake_up or "friend" in wake_up:
+                        pyautogui.hotkey("alt","right")
                         continue
 
                     elif "maximize" in wake_up:
@@ -1343,6 +1385,17 @@ def TaskExecution():
                     elif "close" in wake_up:
                         close_window()
                         continue
+
+                    elif "save" in wake_up:
+                        pyautogui.keyDown("ctrl")
+                        pyautogui.press("s")
+                        pyautogui.keyUp("ctrl")
+                        continue
+
+                    # elif ""
+                    #     for _ in range(scroll_amount):
+                    #         pyautogui.press('pagedown')
+                    #         time.sleep(1)
 
                     elif "switch tab" in wake_up or "which tab" in wake_up or "pitch tab" in wake_up or "twitch tab" in wake_up:
                         pyautogui.keyDown("ctrl")
