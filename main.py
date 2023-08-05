@@ -1149,6 +1149,7 @@ def TaskExecution():
         mapping = {
             "backspace": "backspace",
             "tab": "tab",
+            "select":"enter",
             "enter": "enter",
             "shift": "shift",
             "ctrl": "ctrl",
@@ -1402,6 +1403,10 @@ def TaskExecution():
                         pyautogui.press("tab")
                         pyautogui.keyUp("ctrl")
                         speak("switched")
+                        continue
+
+                    elif "new tab" in wake_up:
+                        pyautogui.hotkey("ctrl","t")
                         continue
 
                     elif "recent tabs" in wake_up or "recent tab" in wake_up:
@@ -1856,7 +1861,9 @@ def TaskExecution():
                                     # else:
                                     #     subprocess.run('explorer.exe search-ms:', shell=True)
                                     time.sleep(1)
-                                    pyautogui.typewrite(query)
+                                    for i in query:
+                                        pyautogui.typewrite(i)
+                                    # pyautogui.typewrite(query)
                                     time.sleep(0.5)
                                     pyautogui.press('down')
                                     pyautogui.press('down')
@@ -1865,7 +1872,9 @@ def TaskExecution():
 
                                     time.sleep(0.5)
                                     speak("opening " + query)
-                                    pyautogui.press("enter")
+                                    pyautogui.keyDown("enter")
+                                    time.sleep(0.5)
+                                    pyautogui.keyUp("enter")
                                     # os.startfile(query)
                                 except Exception:
                                     speak("sorry sir i cannot find " + str(query) + " in desktop ")
