@@ -32,9 +32,9 @@ This system is specially built for individuals who are physically challenged in 
 
 ### 🔍 Upcoming Enhancement
 
-I’m transitioning the voice input logic to use **LLM (Large Language Model)**-based tokenization.  
-- Users can speak **naturally**, without needing to remember specific command phrases.  
-- The assistant will understand **intent** and map it to the correct action, improving accessibility and user experience.
+The current voice input logic already understands the user’s intent from their sentence. However, I’m transitioning to **LLM (Large Language Model)**-based tokenization to **significantly enhance** this capability.  
+- Users will be able to speak **more naturally**, with an even **broader range of expressions** supported.  
+- The assistant will better understand **context and intent**, allowing for more accurate and seamless interactions.
 
 ---
 
